@@ -44,7 +44,7 @@
 Run the agent via the CLI launcher provided by the ADK:
 
 ```bash
-go run main.go "What is the variation score for Greece?"
+go run main.go
 ```
 
 ### Example Programmatic Result
