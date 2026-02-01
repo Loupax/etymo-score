@@ -1,0 +1,30 @@
+name: Go CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+    - name: Install Dependencies
+      run: go mod tidy
+
+    - name: Build
+      run: go build -v ./...
+
+    # Optional: Run tests if you have them
+    - name: Test
+      run: go test -v ./...
+      env:
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
